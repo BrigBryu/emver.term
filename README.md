@@ -4,12 +4,12 @@ Animated ASCII heat-map scenes for the terminal, rewritten in C for fast standal
 
 `ember.term` started as a fork of `ember.nvim`, but it is now a terminal-first application with a native frame engine, an `ncurses` live renderer, and a plain stdout `print-frame` mode for scripts.
 
-![ember.nvim preview](ember-export.gif)
+![ember.term preview](ember.neovim-cropped.gif)
 
 ## Features
 
 - Standalone binary: `ember-term`
-- Three live scenes: `fire`, `lava`, `spiral`
+- Three scenes: `fire`, `lava`, `spiral`
 - `widget` mode for small fixed-size panes such as tmux sidebars
 - `fullscreen` mode for ambient backgrounds and screensaver-style sessions
 - `print-frame` mode for generating a single text frame on stdout
@@ -37,7 +37,21 @@ The `Makefile` prefers `pkg-config` with `ncursesw` when available and falls bac
 
 Press `q` or `Ctrl-C` to exit live rendering modes.
 
+## Scene Notes
+
+Lava currently looks a little odd, but it is interesting enough to keep around as a distinct scene.
+
+### Lava Preview
+
+![Lava preview](lava-ember.nvim-example.gif)
+
+### Spiral Preview
+
+![Spiral preview](spiral-ember.nvim-example.gif)
+
 ## Modes
+
+The live `widget` and `fullscreen` modes use `ncurses`. If you want the original Neovim floating-window version instead, see [ember.nvim](https://github.com/BrigBryu/ember.nvim).
 
 ### Widget
 
@@ -96,4 +110,4 @@ Example benchmark command:
 
 ## Notes
 
-The legacy Lua/Neovim files are still present in this initial fork as reference material for scene behavior, but the active runtime is the native C application.
+The legacy Lua and Neovim files are still present in this initial fork as reference material for scene behavior, but the active runtime is the native C application.
