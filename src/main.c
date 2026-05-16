@@ -3,8 +3,16 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 int main(int argc, char **argv) {
+  for (int i = 1; i < argc; ++i) {
+    if ((strcmp(argv[i], "--help") == 0) || (strcmp(argv[i], "-h") == 0)) {
+      ember_print_usage(argv[0]);
+      return 0;
+    }
+  }
+
   EmberOptions options;
   ember_options_init(&options);
   if (!ember_parse_args(argc, argv, &options)) {

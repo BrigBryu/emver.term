@@ -1,0 +1,83 @@
+*ember.term* Animated terminal heat-map renderer
+
+Author: ember.term contributors
+License: MIT
+
+==============================================================================
+CONTENTS                                                   *ember.term-contents*
+
+1. Introduction ........................................ *ember.term-intro*
+2. Build ............................................... *ember.term-build*
+3. Usage ............................................... *ember.term-usage*
+4. Modes ............................................... *ember.term-modes*
+5. Options ........................................... *ember.term-options*
+6. Benchmarking .................................. *ember.term-benchmarking*
+
+==============================================================================
+INTRODUCTION                                                *ember.term-intro*
+
+ember.term is a standalone C program for animated ASCII heat-map scenes in the
+terminal. It began as a fork of ember.nvim, but the active runtime now uses a
+native frame engine plus ncurses rendering.
+
+==============================================================================
+BUILD                                                        *ember.term-build*
+
+Build with: >
+  make
+<
+
+The Makefile prefers pkg-config with ncursesw when available and falls back to
+linking against ncurses directly on systems that do not provide pkg-config.
+
+==============================================================================
+USAGE                                                        *ember.term-usage*
+
+Examples: >
+  ./ember-term --scene fire --palette gruvbox --fps 8 --width 33 --height 12
+  ./ember-term --scene lava --palette gruvbox --fps 6 --fullscreen
+  ./ember-term --scene spiral --chars " .:^*x#%@"
+  ./ember-term --mode print-frame --scene fire --width 33 --height 12
+<
+
+Press `q` or `CTRL-C` to exit live modes.
+
+==============================================================================
+MODES                                                        *ember.term-modes*
+
+`widget`
+  Fixed-size animation for tmux panes and compact terminal regions.
+
+`fullscreen`
+  Full-terminal ambient mode with resize handling.
+
+`print-frame`
+  Emit one plain-text frame to stdout with no ANSI color escapes.
+
+==============================================================================
+OPTIONS                                                    *ember.term-options*
+
+Supported options: >
+  --scene fire|lava|spiral
+  --palette default|gruvbox
+  --fps N
+  --width N
+  --height N
+  --chars STRING
+  --mode widget|fullscreen|print-frame
+  --fullscreen
+  --benchmark [frames]
+  --help
+<
+
+==============================================================================
+BENCHMARKING                                          *ember.term-benchmarking*
+
+Run an offscreen benchmark and print frame timings: >
+  ./ember-term --scene lava --width 33 --height 12 --benchmark 180
+<
+
+This helps compare scene cost across sizes and validates the performance gain
+from the C runtime.
+
+vim:tw=78:ts=8:noet:ft=help:norl:

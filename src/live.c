@@ -96,7 +96,10 @@ bool ember_run_live(EmberState *state, const EmberOptions *options) {
   configure_colors(options->palette);
 
   int draw_height = state->height;
-  int draw_width = state->width;
+
+  if (options->mode == EMBER_MODE_FULLSCREEN) {
+    g_resize = 1;
+  }
 
   while (!g_stop) {
     if (options->mode == EMBER_MODE_FULLSCREEN && g_resize) {
@@ -110,7 +113,6 @@ bool ember_run_live(EmberState *state, const EmberOptions *options) {
       if (rows > 0 && cols > 0) {
         ember_state_resize(state, cols, rows);
         draw_height = state->height;
-        draw_width = state->width;
       }
     }
 
@@ -121,10 +123,8 @@ bool ember_run_live(EmberState *state, const EmberOptions *options) {
     getmaxyx(stdscr, max_rows, max_cols);
     if (options->mode == EMBER_MODE_WIDGET) {
       draw_height = state->height < max_rows ? state->height : max_rows;
-      draw_width = state->width < max_cols ? state->width : max_cols;
     } else {
       draw_height = state->height;
-      draw_width = state->width;
     }
 
     for (int row = 0; row < draw_height; ++row) {
