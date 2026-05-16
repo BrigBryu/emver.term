@@ -16,7 +16,7 @@ SRC := src/main.c src/cli.c src/engine.c src/live.c
 OBJ := $(SRC:.c=.o)
 BIN := ember-term
 
-.PHONY: all clean run
+.PHONY: all clean run test
 
 all: $(BIN)
 
@@ -28,6 +28,9 @@ $(BIN): $(OBJ)
 
 run: $(BIN)
 	./$(BIN)
+
+test: $(BIN)
+	./tests/smoke.sh
 
 clean:
 	rm -f $(OBJ) $(BIN)
