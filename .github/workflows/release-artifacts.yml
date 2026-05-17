@@ -41,7 +41,7 @@ jobs:
       - name: Build smoke-tested archive
         run: |
           chmod +x scripts/package-release.sh tests/smoke.sh
-          ./tests/smoke.sh
+          make test
           ./scripts/package-release.sh "$EMBER_RELEASE_VERSION"
 
       - name: Upload packaged artifact
