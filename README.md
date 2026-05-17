@@ -25,6 +25,10 @@ make
 
 The `Makefile` prefers `pkg-config` with `ncursesw` when available and falls back to `-lncurses` on systems like macOS Command Line Tools.
 
+## Release Status
+
+`ember.term` is shipping as a `v1.0.0` source release with downloadable macOS and Linux archives. The macOS archive can be Developer ID signed during release packaging, and building from source with `make` remains the supported fallback.
+
 ## Usage
 
 ```bash
