@@ -1,2 +1,3 @@
 ember-term
 src/*.o
+dist/
