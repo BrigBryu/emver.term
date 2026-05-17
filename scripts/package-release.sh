@@ -14,6 +14,11 @@ cd "$root_dir"
 os_name=$(uname -s)
 arch_name=$(uname -m)
 platform_slug=$(printf '%s' "$os_name" | tr '[:upper:]' '[:lower:]')
+
+if [ "$os_name" = "Darwin" ]; then
+  platform_slug="macos"
+fi
+
 archive_basename="ember-term-${version}-${platform_slug}-${arch_name}"
 stage_dir="${root_dir}/dist/${archive_basename}"
 archive_path="${root_dir}/dist/${archive_basename}.tar.gz"
