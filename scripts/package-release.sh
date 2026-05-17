@@ -17,6 +17,7 @@ platform_slug=$(printf '%s' "$os_name" | tr '[:upper:]' '[:lower:]')
 archive_basename="ember-term-${version}-${platform_slug}-${arch_name}"
 stage_dir="${root_dir}/dist/${archive_basename}"
 archive_path="${root_dir}/dist/${archive_basename}.tar.gz"
+binary_asset_name="ember-term-${platform_slug}-${arch_name}"
 
 rm -rf "${root_dir}/dist"
 mkdir -p "$stage_dir"
@@ -32,5 +33,7 @@ if [ "$os_name" = "Darwin" ] && [ -n "${SIGNING_IDENTITY:-}" ]; then
   codesign --verify --verbose "$stage_dir/ember-term"
 fi
 
+cp "$stage_dir/ember-term" "${root_dir}/dist/${binary_asset_name}"
 tar -czf "$archive_path" -C "${root_dir}/dist" "$archive_basename"
+printf '%s\n' "${root_dir}/dist/${binary_asset_name}"
 printf '%s\n' "$archive_path"
