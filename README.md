@@ -27,7 +27,12 @@ The `Makefile` prefers `pkg-config` with `ncursesw` when available and falls bac
 
 ## Release Status
 
-`ember.term` is shipping as a `v1.0.0` source release with downloadable macOS and Linux archives. The macOS archive can be Developer ID signed during release packaging, and building from source with `make` remains the supported fallback.
+`ember.term` is shipping as a `v1.0.0` source release with downloadable macOS and Linux binaries.
+
+- If you just want to run it, the release includes direct executable downloads for macOS and Linux.
+- If you want the bundled docs and license too, the release also includes `.tar.gz` archives for both platforms.
+- The macOS executable is Developer ID signed, which is important and genuinely nice for a small standalone terminal app.
+- Building from source with `make` remains the supported fallback if you prefer that route.
 
 ## Usage
 
